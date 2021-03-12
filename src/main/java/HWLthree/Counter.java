@@ -23,7 +23,7 @@ public class Counter {
         boolean flag = true;
         while (flag) {
             try {
-                lock.tryLock(5000, TimeUnit.MILLISECONDS);
+                lock.tryLock();
 
                 try {
                     flag=false;
@@ -33,8 +33,8 @@ public class Counter {
                 } finally {
                     lock.unlock();
                 }
-            } catch (InterruptedException e) {
-                Thread.currentThread().isInterrupted();
+            } catch (Exception e){
+
             }
         }
     }
