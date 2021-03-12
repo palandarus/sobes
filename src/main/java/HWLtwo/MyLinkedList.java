@@ -205,9 +205,10 @@ public class MyLinkedList<T> {
         public I next() {
             if (atEnd()) return null;
             else {
+                I value=currentElement.value;
                 currentElement = currentElement.next;
                 position++;
-                return currentElement.value;
+                return value;
             }
         }
 
@@ -218,9 +219,10 @@ public class MyLinkedList<T> {
         public I previous() {
             if(atStart()) return null;
             else {
+                I value=currentElement.value;
                 currentElement=currentElement.previous;
                 position--;
-                return currentElement.value;
+                return value;
             }
         }
 
