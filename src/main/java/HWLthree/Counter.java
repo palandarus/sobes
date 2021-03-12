@@ -20,19 +20,22 @@ public class Counter {
     }
 
     public void incrementCount() {
-
-        try {
-            lock.tryLock(5000, TimeUnit.MILLISECONDS);
-
+        boolean flag = true;
+        while (flag) {
             try {
-                if (count < Integer.MAX_VALUE) count++;
-                System.out.println("Counter was incremented by: " + Thread.currentThread());
-                System.out.println(count);
-            } finally {
-                lock.unlock();
+                lock.tryLock(5000, TimeUnit.MILLISECONDS);
+
+                try {
+                    flag=false;
+                    if (count < Integer.MAX_VALUE) count++;
+                    System.out.println("Counter was incremented by: " + Thread.currentThread());
+                    System.out.println(count);
+                } finally {
+                    lock.unlock();
+                }
+            } catch (InterruptedException e) {
+                Thread.currentThread().isInterrupted();
             }
-        } catch (InterruptedException e) {
-            Thread.currentThread().isInterrupted();
         }
     }
 

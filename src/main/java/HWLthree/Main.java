@@ -18,10 +18,11 @@ public class Main {
                 }
             }
         };
-
         Thread.sleep(10000);
         playerOne.interrupt();
         playerTwo.interrupt();
+        playerOne.join();
+        playerTwo.join();
         for (int i = 0; i < 100; i++) {
             new Thread(counterTask).start();
         }

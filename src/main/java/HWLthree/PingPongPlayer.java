@@ -21,7 +21,7 @@ public class PingPongPlayer extends Thread {
                 System.out.println(turn);
                 semaphore.release();
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                break;
             }
 
         }
