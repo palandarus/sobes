@@ -1,8 +1,6 @@
 package HWLtwo;
 
-import lombok.Data;
 
-@Data
 public class MyArrayList<T> {
     private static final int DEFAULT_CAPACITY = 10;
     private T[] arr;
