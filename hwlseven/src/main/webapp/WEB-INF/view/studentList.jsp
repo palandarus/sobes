@@ -12,15 +12,21 @@
 
 <br/><br/>
 <div>
+    <a class="btn btn-success"  href="${pageContext.request.contextPath}/add">Create Student</a>
     <table border="1">
         <tr>
             <th>Name</th>
             <th>Age</th>
+            <th>Action</th>
         </tr>
         <c:forEach  items="${students}" var ="student">
             <tr>
                 <td>${student.name}</td>
                 <td>${student.age}</td>
+                <td>
+                    <a class="btn btn-success"  href="${pageContext.request.contextPath}/edit/${student.id}">Edit</a>
+                    <a class="btn btn-danger"  href="${pageContext.request.contextPath}/delete/${student.id}">Delete</a>
+                </td>
             </tr>
         </c:forEach>
     </table>
